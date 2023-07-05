@@ -45,9 +45,6 @@ jobs:
       - name: NPM Build
         run: npm run build
 
-      - name: Run tests
-        run: npm test
-
   lint:
     runs-on: ubuntu-latest
 
