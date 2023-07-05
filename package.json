@@ -65,5 +65,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ttshivers/nestjs-http-promise"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
