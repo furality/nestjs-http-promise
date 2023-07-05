@@ -46,7 +46,7 @@ export class HttpModule {
   static registerAsync(options: HttpModuleAsyncOptions): DynamicModule {
     return {
       module: HttpModule,
-      imports: options.imports,
+      ...(options.imports && {imports: options.imports}),
       providers: [
         ...this.createAsyncProviders(options),
         {
@@ -96,7 +96,7 @@ export class HttpModule {
       provide: HTTP_MODULE_OPTIONS,
       useFactory: async (optionsFactory: HttpModuleOptionsFactory) =>
         optionsFactory.createHttpOptions(),
-      inject,
+      ...(inject && {inject}),
     };
   }
 }
