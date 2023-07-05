@@ -1,10 +1,4 @@
 {
-  "include": [
-    "lib/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Node 18 + Strictest",
   "compilerOptions": {
@@ -37,8 +31,13 @@
     "sourceMap": true,
     "outDir": "./dist",
     "rootDir": "./lib",
-    "incremental": true,
     "strictPropertyInitialization": false,
     "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "lib/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
