@@ -1,4 +1,10 @@
 {
+  "branches": [
+    {
+      "name": "main",
+      "channel": false
+    }
+  ],
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "conventionalcommits",
