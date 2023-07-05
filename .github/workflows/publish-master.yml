@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: setup Node
         uses: actions/setup-node@v3
         with:
@@ -30,7 +30,7 @@ jobs:
       needs: publish-to-npm
       steps:
         - name: checkout
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3
       # Push tag to GitHub if package.json version's tag is not tagged
         - name: package-version
           run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
