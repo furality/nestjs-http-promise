@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-http-promise",
+  "name": "@ttshivers/nestjs-http-promise",
   "version": "2.0.0",
   "keywords": [
     "nestjs",
@@ -10,11 +10,11 @@
     "axios"
   ],
   "description": "promise implementation of nestjs http module with retries feature using axios-retry and axios",
-  "author": "Ben Hason",
+  "author": "ttshivers",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "url": "https://github.com/benhason1/nestjs-http-promise#readme",
+  "url": "https://github.com/ttshivers/nestjs-http-promise#readme",
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
     "format": "prettier --write \"{lib}/**/*.ts\"",
@@ -63,6 +63,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/benhason1/nestjs-http-promise"
+    "url": "https://github.com/ttshivers/nestjs-http-promise"
   }
 }
