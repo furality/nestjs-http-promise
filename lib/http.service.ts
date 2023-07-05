@@ -20,8 +20,7 @@ export class HttpService {
     this.put = this.instance.put;
     this.post = this.instance.post;
     this.patch = this.instance.patch;
-    this.head = this.instance.head;
-    this.head = this.instance.head;
+    this.head = this.instance.head as typeof Axios.patch;
     this.delete = this.instance.delete;
     this.get = this.instance.get;
     this.request = this.instance.request;
