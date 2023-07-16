@@ -1,5 +1,5 @@
 {
-  "name": "@ttshivers/nestjs-http-promise",
+  "name": "@furality/nestjs-http-promise",
   "version": "0.0.0-semantically-release",
   "private": false,
   "keywords": [
@@ -11,11 +11,11 @@
     "axios"
   ],
   "description": "promise implementation of nestjs http module with retries feature using axios-retry and axios",
-  "author": "ttshivers",
+  "author": "furality",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "url": "https://github.com/ttshivers/nestjs-http-promise#readme",
+  "url": "https://github.com/furality/nestjs-http-promise#readme",
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
     "format": "prettier --write \"{lib}/**/*.ts\"",
@@ -64,7 +64,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ttshivers/nestjs-http-promise"
+    "url": "https://github.com/furality/nestjs-http-promise"
   },
   "publishConfig": {
     "access": "public"
