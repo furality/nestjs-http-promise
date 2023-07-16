@@ -43,5 +43,5 @@ jobs:
         id: release
         uses: ahmadnassri/action-semantic-release@v2.2.3
         env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
