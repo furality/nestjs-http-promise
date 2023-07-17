@@ -14,6 +14,8 @@ jobs:
         uses: actions/setup-node@v3.7.0
         with:
           node-version: '20.x'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout
         uses: actions/checkout@v3.5.3
@@ -44,4 +46,5 @@ jobs:
         uses: ahmadnassri/action-semantic-release@v2.2.3
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: fake
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
