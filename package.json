@@ -67,7 +67,8 @@
     "url": "https://github.com/furality/nestjs-http-promise"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist"
