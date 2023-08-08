@@ -5,14 +5,10 @@ import { AXIOS_INSTANCE_TOKEN, HTTP_MODULE_ID, HTTP_MODULE_OPTIONS } from './htt
 import { HttpService } from './http.service';
 import { HttpModuleAsyncOptions, HttpModuleOptions, HttpModuleOptionsFactory } from './interfaces';
 import axiosRetry from 'axios-retry';
-import axiosBetterStacktrace from 'axios-better-stacktrace';
 
 const createAxiosInstance = (config?: HttpModuleOptions) => {
   const axiosInstance = Axios.create(config);
   axiosRetry(axiosInstance, config);
-  if (config?.isBetterStackTraceEnabled === undefined || config?.isBetterStackTraceEnabled) {
-    axiosBetterStacktrace(axiosInstance);
-  }
   return axiosInstance;
 };
 
@@ -46,7 +42,7 @@ export class HttpModule {
   static registerAsync(options: HttpModuleAsyncOptions): DynamicModule {
     return {
       module: HttpModule,
-      ...(options.imports && {imports: options.imports}),
+      ...(options.imports && { imports: options.imports }),
       providers: [
         ...this.createAsyncProviders(options),
         {
@@ -96,7 +92,7 @@ export class HttpModule {
       provide: HTTP_MODULE_OPTIONS,
       useFactory: async (optionsFactory: HttpModuleOptionsFactory) =>
         optionsFactory.createHttpOptions(),
-      ...(inject && {inject}),
+      ...(inject && { inject }),
     };
   }
 }
