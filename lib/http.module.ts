@@ -1,9 +1,10 @@
-import { DynamicModule, Module, Provider } from '@nestjs/common';
+import type { DynamicModule, Provider } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 import Axios from 'axios';
 import { AXIOS_INSTANCE_TOKEN, HTTP_MODULE_ID, HTTP_MODULE_OPTIONS } from './http.constants';
 import { HttpService } from './http.service';
-import { HttpModuleAsyncOptions, HttpModuleOptions, HttpModuleOptionsFactory } from './interfaces';
+import type { HttpModuleAsyncOptions, HttpModuleOptions, HttpModuleOptionsFactory } from './interfaces';
 import axiosRetry from 'axios-retry';
 
 const createAxiosInstance = (config?: HttpModuleOptions) => {
