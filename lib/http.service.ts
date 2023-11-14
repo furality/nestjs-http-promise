@@ -1,26 +1,29 @@
-import { Injectable } from '@nestjs/common';
-import { Inject } from '@nestjs/common';
-import Axios, { AxiosInstance } from 'axios';
+/* eslint-disable @typescript-eslint/unbound-method */
+
+import { Inject, Injectable } from '@nestjs/common';
+import axios, { AxiosInstance } from 'axios';
+
 import { AXIOS_INSTANCE_TOKEN } from './http.constants';
 
 @Injectable()
 export class HttpService {
-  public readonly put: typeof Axios.put;
-  public readonly post: typeof Axios.post;
-  public readonly patch: typeof Axios.patch;
-  public readonly head: typeof Axios.patch;
-  public readonly delete: typeof Axios.delete;
-  public readonly get: typeof Axios.get;
-  public readonly request: typeof Axios.request;
+  public readonly put: typeof axios.put;
+  public readonly post: typeof axios.post;
+  public readonly patch: typeof axios.patch;
+  public readonly head: typeof axios.patch;
+  public readonly delete: typeof axios.delete;
+  public readonly get: typeof axios.get;
+  public readonly request: typeof axios.request;
 
   constructor(
     @Inject(AXIOS_INSTANCE_TOKEN)
-    private readonly instance: AxiosInstance = Axios,
+    private readonly instance: AxiosInstance = axios,
   ) {
     this.put = this.instance.put;
     this.post = this.instance.post;
     this.patch = this.instance.patch;
-    this.head = this.instance.head as typeof Axios.patch;
+    // eslint-disable-next-line no-type-assertion/no-type-assertion
+    this.head = this.instance.head as typeof axios.patch;
     this.delete = this.instance.delete;
     this.get = this.instance.get;
     this.request = this.instance.request;

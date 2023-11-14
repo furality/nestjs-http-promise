@@ -1,13 +1,19 @@
-import { DynamicModule, Module, Provider } from '@nestjs/common';
+import type { DynamicModule, Provider } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
-import Axios from 'axios';
-import { AXIOS_INSTANCE_TOKEN, HTTP_MODULE_ID, HTTP_MODULE_OPTIONS } from './http.constants';
-import { HttpService } from './http.service';
-import { HttpModuleAsyncOptions, HttpModuleOptions, HttpModuleOptionsFactory } from './interfaces';
+import axios from 'axios';
 import axiosRetry from 'axios-retry';
 
+import { AXIOS_INSTANCE_TOKEN, HTTP_MODULE_ID, HTTP_MODULE_OPTIONS } from './http.constants';
+import { HttpService } from './http.service';
+import type {
+  HttpModuleAsyncOptions,
+  HttpModuleOptions,
+  HttpModuleOptionsFactory,
+} from './interfaces';
+
 const createAxiosInstance = (config?: HttpModuleOptions) => {
-  const axiosInstance = Axios.create(config);
+  const axiosInstance = axios.create(config);
   axiosRetry(axiosInstance, config);
   return axiosInstance;
 };
@@ -54,23 +60,24 @@ export class HttpModule {
           provide: HTTP_MODULE_ID,
           useValue: randomStringGenerator(),
         },
-        ...(options.extraProviders || []),
+        ...(options.extraProviders ?? []),
       ],
     };
   }
 
   private static createAsyncProviders(options: HttpModuleAsyncOptions): Provider[] {
-    if (options.useExisting || options.useFactory) {
+    if (!!options.useExisting || !!options.useFactory) {
       return [this.createAsyncOptionsProvider(options)];
     }
 
     const providers = [this.createAsyncOptionsProvider(options)];
 
-    if (options.useClass)
+    if (options.useClass) {
       providers.push({
         provide: options.useClass,
         useClass: options.useClass,
       });
+    }
 
     return providers;
   }
@@ -80,18 +87,21 @@ export class HttpModule {
       return {
         provide: HTTP_MODULE_OPTIONS,
         useFactory: options.useFactory,
-        inject: options.inject || [],
+        inject: options.inject ?? [],
       };
     }
 
     let inject;
-    if (options.useExisting) inject = [options.useExisting];
-    else if (options.useClass) inject = [options.useClass];
+    if (options.useExisting) {
+      inject = [options.useExisting];
+    } else if (options.useClass) {
+      inject = [options.useClass];
+    }
 
     return {
       provide: HTTP_MODULE_OPTIONS,
       useFactory: async (optionsFactory: HttpModuleOptionsFactory) =>
-        optionsFactory.createHttpOptions(),
+        await optionsFactory.createHttpOptions(),
       ...(inject && { inject }),
     };
   }
