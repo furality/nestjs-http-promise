@@ -1,3 +1,3 @@
-export { HttpService } from './http.service';
 export { HttpModule } from './http.module';
+export { HttpService } from './http.service';
 export * from './interfaces';
