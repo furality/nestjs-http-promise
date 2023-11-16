@@ -27,7 +27,7 @@
     "prepublish:beta": "npm run build"
   },
   "dependencies": {
-    "axios-retry": "^3.9.0"
+    "axios-retry": "^3.9.1"
   },
   "devDependencies": {
     "@nestjs/common": "^10.2.8",
