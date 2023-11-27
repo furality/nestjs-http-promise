@@ -87,7 +87,6 @@ export class HttpModule {
       return {
         provide: HTTP_MODULE_OPTIONS,
         useFactory: options.useFactory,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         inject: options.inject ?? [],
       };
     }

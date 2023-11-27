@@ -1,9 +1,15 @@
-import type { ModuleMetadata, Provider, Type } from '@nestjs/common';
+import type {
+  InjectionToken,
+  ModuleMetadata,
+  OptionalFactoryDependency,
+  Provider,
+  Type,
+} from '@nestjs/common';
 import type { AxiosRequestConfig } from 'axios';
-import type IAxiosRetry from 'axios-retry';
+import type { IAxiosRetryConfig } from 'axios-retry';
 
 export type HttpModuleOptions = AxiosRequestConfig &
-  IAxiosRetry.IAxiosRetryConfig & { isBetterStackTraceEnabled?: boolean };
+  IAxiosRetryConfig & { isBetterStackTraceEnabled?: boolean };
 
 export interface HttpModuleOptionsFactory {
   createHttpOptions(): Promise<HttpModuleOptions> | HttpModuleOptions;
@@ -14,7 +20,6 @@ export interface HttpModuleAsyncOptions extends Pick<ModuleMetadata, 'imports'> 
   useClass?: Type<HttpModuleOptionsFactory>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useFactory?: (...args: any[]) => Promise<HttpModuleOptions> | HttpModuleOptions;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  inject?: any[];
+  inject?: (InjectionToken | OptionalFactoryDependency)[];
   extraProviders?: Provider[];
 }
