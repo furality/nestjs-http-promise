@@ -1,0 +1,8 @@
+githubRepoOwner: furality
+githubRepoName: nestjs-http-promise
+githubHost: github.com
+requireChecks: true
+requireApproval: false
+mergeMethod: merge
+mergeQueue: false
+forceFetchTags: false
