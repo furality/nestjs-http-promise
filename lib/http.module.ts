@@ -1,5 +1,5 @@
 import type { DynamicModule, Provider } from '@nestjs/common';
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 import axios from 'axios';
 import axiosRetry, { exponentialDelay } from 'axios-retry';
@@ -13,10 +13,28 @@ import type {
 } from './interfaces';
 
 const createAxiosInstance = (config?: HttpModuleOptions) => {
+  const logger = new Logger(HttpService.name);
   const axiosInstance = axios.create(config);
   axiosRetry(axiosInstance, {
     // Default exponential backoff
     retryDelay: exponentialDelay,
+    onRetry(retryCount, error, requestConfig) {
+      logger.warn(
+        {
+          retryCount,
+          name: error.name,
+          message: error.message,
+          code: error.code,
+          method: requestConfig.method,
+          baseURL: requestConfig.baseURL,
+          url: requestConfig.url,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          params: requestConfig.params,
+          data: error.response?.data,
+        },
+        'Retrying request after error',
+      );
+    },
     ...config,
   });
   return axiosInstance;
