@@ -8,8 +8,7 @@ import type {
 import type { AxiosRequestConfig } from 'axios';
 import type { IAxiosRetryConfig } from 'axios-retry';
 
-export type HttpModuleOptions = AxiosRequestConfig &
-  IAxiosRetryConfig & { isBetterStackTraceEnabled?: boolean };
+export type HttpModuleOptions = AxiosRequestConfig & IAxiosRetryConfig;
 
 export interface HttpModuleOptionsFactory {
   createHttpOptions(): Promise<HttpModuleOptions> | HttpModuleOptions;
