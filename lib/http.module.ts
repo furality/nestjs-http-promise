@@ -2,7 +2,7 @@ import type { DynamicModule, Provider } from '@nestjs/common';
 import { Module } from '@nestjs/common';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 import axios from 'axios';
-import axiosRetry from 'axios-retry';
+import axiosRetry, { exponentialDelay } from 'axios-retry';
 
 import { AXIOS_INSTANCE_TOKEN, HTTP_MODULE_ID, HTTP_MODULE_OPTIONS } from './http.constants';
 import { HttpService } from './http.service';
@@ -14,7 +14,11 @@ import type {
 
 const createAxiosInstance = (config?: HttpModuleOptions) => {
   const axiosInstance = axios.create(config);
-  axiosRetry(axiosInstance, config);
+  axiosRetry(axiosInstance, {
+    // Default exponential backoff
+    retryDelay: exponentialDelay,
+    ...config,
+  });
   return axiosInstance;
 };
 
