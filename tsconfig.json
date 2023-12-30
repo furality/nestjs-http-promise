@@ -31,8 +31,9 @@
     "sourceMap": true,
     "outDir": "./dist",
     "rootDir": "./lib",
-    "strictPropertyInitialization": false,
-    "resolveJsonModule": true
+    "strictPropertyInitialization": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true
   },
   "include": [
     "lib/**/*"
