@@ -5,6 +5,12 @@ export function isGatewayError(error: AxiosError): boolean {
   return !!error.response && error.response.status >= 502 && error.response.status <= 504;
 }
 
-export function isNetworkOrIdempotentRequestOrGatewayError(error: AxiosError): boolean {
-  return isNetworkOrIdempotentRequestError(error) || isGatewayError(error);
+export function isRateLimitError(error: AxiosError): boolean {
+  return !!error.response && error.response.status === 429;
+}
+
+export function isNetworkOrIdempotentRequestOrGatewayOrRateLimitError(error: AxiosError): boolean {
+  return (
+    isNetworkOrIdempotentRequestError(error) || isGatewayError(error) || isRateLimitError(error)
+  );
 }

@@ -6,6 +6,7 @@ import axiosRetry, { exponentialDelay } from 'axios-retry';
 
 import { AXIOS_INSTANCE_TOKEN, HTTP_MODULE_ID, HTTP_MODULE_OPTIONS } from './http.constants';
 import { HttpService } from './http.service';
+import { isNetworkOrIdempotentRequestOrGatewayOrRateLimitError } from './http.util';
 import type {
   HttpModuleAsyncOptions,
   HttpModuleOptions,
@@ -18,6 +19,7 @@ const createAxiosInstance = (config?: HttpModuleOptions) => {
   axiosRetry(axiosInstance, {
     // Default exponential backoff
     retryDelay: exponentialDelay,
+    retryCondition: isNetworkOrIdempotentRequestOrGatewayOrRateLimitError,
     onRetry(retryCount, error, requestConfig) {
       logger.warn(
         {
