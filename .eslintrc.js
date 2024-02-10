@@ -61,12 +61,7 @@ module.exports = {
     'import/no-duplicates': 'error',
     'import/no-unresolved': 'error',
     curly: 'error',
-    'no-console': [
-      'warn',
-      {
-        allow: ['warn', 'error'],
-      },
-    ],
+    'no-console': 'error',
     quotes: [
       'error',
       'single',
