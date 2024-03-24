@@ -17,6 +17,7 @@ const createAxiosInstance = (config?: HttpModuleOptions) => {
   const logger = new Logger(HttpService.name);
   const axiosInstance = axios.create(config);
   axiosRetry(axiosInstance, {
+    retries: 10,
     // Default exponential backoff
     retryDelay: exponentialDelay,
     retryCondition: isNetworkOrIdempotentRequestOrGatewayOrRateLimitError,
