@@ -10,9 +10,11 @@ updates:
       prefix: "build(deps)"
       prefix-development: "build(deps-dev)"
     groups:
-        dependencies:
-          patterns:
-            - "*"
+      dependencies:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - eslint
 
   - package-ecosystem: "github-actions"
     directory: "/"
