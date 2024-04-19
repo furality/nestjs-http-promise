@@ -8,16 +8,14 @@ nestjs module that just doing little modification to the original and good **nes
 
 ## features
   * axios - the most used package for http requests in npm and the one used by nestjs official http library.
-    * better axios stack trace - axios has an [open issue](https://github.com/axios/axios/issues/2387) about improvement of their stack trace. 
-      in this library there is a default interceptor that will intercept the stack trace and will add data to it.
-  * promise based - most of us using the current http module that uses observable which we don't use most of the time 
+  * promise based - most of us using the current http module that uses observable which we don't use most of the time
     and in order to avoid it were just calling `.toPromise()` every http call.
   * retries - in many cases we will want to retry a failing http call.
     with observable we could just add the retry operator (rxjs) but with promises we need to implement this logic ourselves.
     this package will make it easy for you, just pass `{ retries: NUMBER_OF_RETRIES }` in the config of the http module.
     **more details in the configuration section**
-    
-## quick start 
+
+## quick start
 ### installing
 Using npm:
 ```
@@ -34,7 +32,7 @@ $ yarn add nestjs-http-promise
   ```ts
 import { HttpModule } from 'nestjs-http-promise'
 
-@Module({ 
+@Module({
     imports: [HttpModule]
 })
 ```
@@ -51,7 +49,7 @@ class Demo {
 use the service:
 ```ts
 public callSomeServer(): Promise<object> {
-  return this.httpService.get('http://fakeService') 
+  return this.httpService.get('http://fakeService')
 }
 ```
 
@@ -68,7 +66,7 @@ import { HttpModule } from 'nestjs-http-promise'
   imports: [HttpModule.register(
     {
       timeout: 1000,
-      retries: 5,
+      retries: 10,
         ...
     }
   )]
@@ -77,7 +75,6 @@ import { HttpModule } from 'nestjs-http-promise'
 
 ### default configuration
  * default config of axios-retry : https://github.com/softonic/axios-retry#options
- * better axios stack trace is added by default, you can turn it off by passing the **isBetterStackTraceEnabled** to false.
 
 ## async configuration
 When you need to pass module options asynchronously instead of statically, use the `registerAsync()` method **just like in nest httpModule**.
@@ -88,14 +85,14 @@ you have a couple of techniques to do it:
 HttpModule.registerAsync({
     useFactory: () => ({
     timeout: 1000,
-    retries: 5,
+    retries: 10,
       ...
     }),
 });
 ```
 
 * using class
- 
+
 ```ts
 HttpModule.registerAsync({
   useClass: HttpConfigService,
@@ -109,13 +106,13 @@ class HttpConfigService implements HttpModuleOptionsFactory {
     const configurationData = await someAsyncMethod();
     return {
       timeout: configurationData.timeout,
-      retries: 5,
+      retries: 10,
         ...
     };
   }
 }
 ```
-If you want to reuse an existing options provider instead of creating a copy inside the HttpModule, 
+If you want to reuse an existing options provider instead of creating a copy inside the HttpModule,
 use the useExisting syntax.
 ```ts
 HttpModule.registerAsync({
