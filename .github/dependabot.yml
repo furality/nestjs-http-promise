@@ -15,6 +15,7 @@ updates:
           - "*"
         exclude-patterns:
           - eslint
+          - eslint-plugin-sonarjs
 
   - package-ecosystem: "github-actions"
     directory: "/"
