@@ -29,7 +29,7 @@
     "@nestjs/common": "^10.3.10",
     "@nestjs/core": "^10.3.10",
     "@nestjs/platform-express": "^10.3.10",
-    "@types/node": "^20.14.9",
+    "@types/node": "^20.14.10",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
     "eslint": "^8.57.0",
@@ -43,7 +43,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
-    "rimraf": "^5.0.7",
+    "rimraf": "^5.0.8",
     "typescript": "^5.5.3"
   },
   "peerDependencies": {
