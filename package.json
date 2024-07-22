@@ -23,7 +23,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "axios-retry": "^4.4.1"
+    "axios-retry": "^4.4.2"
   },
   "devDependencies": {
     "@nestjs/common": "^10.3.10",
@@ -40,7 +40,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-sonarjs": "^0.25.1",
     "eslint-plugin-unused-imports": "^3.2.0",
-    "husky": "^9.0.11",
+    "husky": "^9.1.1",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
