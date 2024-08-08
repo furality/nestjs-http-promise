@@ -1,32 +1,28 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "daily"
+      interval: 'daily'
     versioning-strategy: increase
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "build(deps)"
-      prefix-development: "build(deps-dev)"
+      prefix: 'build(deps)'
+      prefix-development: 'build(deps-dev)'
     groups:
       dependencies:
         patterns:
-          - "*"
-        exclude-patterns:
-          - eslint
-          - eslint-plugin-sonarjs
-          - eslint-plugin-unused-imports
+          - '*'
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "daily"
+      interval: 'daily'
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "ci(action)"
-      prefix-development: "ci(dev-action)"
+      prefix: 'ci(action)'
+      prefix-development: 'ci(dev-action)'
     groups:
-        dependencies:
-          patterns:
-            - "*"
+      dependencies:
+        patterns:
+          - '*'

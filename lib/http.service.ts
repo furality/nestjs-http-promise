@@ -22,7 +22,6 @@ export class HttpService {
     this.put = this.instance.put;
     this.post = this.instance.post;
     this.patch = this.instance.patch;
-    // eslint-disable-next-line no-type-assertion/no-type-assertion
     this.head = this.instance.head as typeof axios.patch;
     this.delete = this.instance.delete;
     this.get = this.instance.get;
