@@ -1,1 +1,1 @@
-export * from './http-module.interface';
+export type * from './http-module.interface';
