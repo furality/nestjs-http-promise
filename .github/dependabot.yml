@@ -13,6 +13,8 @@ updates:
       dependencies:
         patterns:
           - '*'
+        exclude-patterns:
+          - eslint
 
   - package-ecosystem: 'github-actions'
     directory: '/'
