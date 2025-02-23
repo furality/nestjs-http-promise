@@ -14,7 +14,7 @@ updates:
         patterns:
           - '*'
         exclude-patterns:
-          - eslint
+          - '@types/eslint__js'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
