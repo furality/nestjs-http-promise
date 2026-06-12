@@ -9,10 +9,10 @@ updates:
     commit-message:
       prefix: 'build(deps)'
       prefix-development: 'build(deps-dev)'
-    groups:
-      dependencies:
-        patterns:
-          - '*'
+    #groups:
+    #  dependencies:
+    #    patterns:
+    #      - '*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
