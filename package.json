@@ -29,7 +29,7 @@
     "@eslint/js": "^10.0.1",
     "@nestjs/common": "^11.2.3",
     "@nestjs/core": "^11.2.1",
-    "@nestjs/platform-express": "^11.2.1",
+    "@nestjs/platform-express": "^11.2.3",
     "@types/node": "^25.9.3",
     "eslint": "^10.9.1",
     "eslint-config-prettier": "^10.1.8",
