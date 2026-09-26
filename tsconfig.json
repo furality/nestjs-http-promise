@@ -5,13 +5,14 @@
     "lib": [
       "esnext"
     ],
-    "module": "commonjs",
-    "target": "esnext",
+    "module": "nodenext",
+    "target": "ES2023",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
+    "resolvePackageJsonExports": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
     "exactOptionalPropertyTypes": true,
